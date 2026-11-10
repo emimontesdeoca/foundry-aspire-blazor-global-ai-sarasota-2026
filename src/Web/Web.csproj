@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <!--
+    The Blazor app. Client packages: the OpenAI SDK + Azure.Identity.
+    Why not Aspire.OpenAI? It doesn't support managed identity, and cloud Foundry has no keys.
+  -->
+  <ItemGroup>
+    <ProjectReference Include="../ServiceDefaults/ServiceDefaults.csproj" />
+  </ItemGroup>
+
+  <!-- Floating versions on purpose: pin them once it works. -->
+  <ItemGroup>
+    <PackageReference Include="OpenAI" Version="*" />
+    <PackageReference Include="Azure.Identity" Version="*" />
+  </ItemGroup>
+
+</Project>

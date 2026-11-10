@@ -1,0 +1,30 @@
+# .NET
+bin/
+obj/
+*.user
+*.suo
+.vs/
+*.swp
+
+# Local config and secrets
+.env
+*.local.*
+appsettings.Development.json
+src/setenv.ps1
+
+# MARP exports
+slides/*.html
+slides/*.pdf
+slides/*.pptx
+
+# Tool output
+infra/
+.aspire/
+k8s-artifacts/
+node_modules/
+.venv/
+__pycache__/
+
+# OS
+.DS_Store
+Thumbs.db

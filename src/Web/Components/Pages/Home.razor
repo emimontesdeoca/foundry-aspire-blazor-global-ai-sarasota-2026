@@ -1,0 +1,56 @@
+@page "/"
+@inject StoryTeller Teller
+
+<PageTitle>Story time</PageTitle>
+
+<main>
+    <h1>Story time</h1>
+    <p>Who is the story about?</p>
+
+    <form @onsubmit="TellAsync">
+        <input @bind="idea" placeholder="A lighthouse keeper who is afraid of the dark" disabled="@busy" />
+        <button type="submit" disabled="@busy">@(busy ? "Writing and drawing…" : "Tell me a story")</button>
+    </form>
+
+    @if (error is not null)
+    {
+        <p class="error">@error</p>
+    }
+
+    @if (story is not null)
+    {
+        <article>
+            <img src="@story.ImageDataUrl" alt="Illustration for the story" />
+            <p>@story.Text</p>
+        </article>
+    }
+</main>
+
+@code {
+    private string idea = "";
+    private bool busy;
+    private Story? story;
+    private string? error;
+
+    private async Task TellAsync()
+    {
+        if (string.IsNullOrWhiteSpace(idea)) return;
+
+        busy = true;
+        error = null;
+        story = null;
+
+        try
+        {
+            story = await Teller.TellAsync(idea);
+        }
+        catch (Exception ex)
+        {
+            error = ex.Message;
+        }
+        finally
+        {
+            busy = false;
+        }
+    }
+}

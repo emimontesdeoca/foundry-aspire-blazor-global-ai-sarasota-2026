@@ -1,0 +1,17 @@
+<Project>
+
+  <!-- Shared settings. Aspire 13 needs the .NET 10 SDK. -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+
+    <!--
+      Some OpenAI SDK and Aspire Foundry/Azure APIs are still marked as experimental.
+      If the build fails with "is for evaluation purposes only", add the id it prints here.
+    -->
+    <NoWarn>$(NoWarn);OPENAI001;ASPIREFOUNDRY001;ASPIREAZURE001;ASPIRECOMPUTE001;ASPIREACADOMAINS001</NoWarn>
+  </PropertyGroup>
+
+</Project>

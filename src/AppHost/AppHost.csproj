@@ -1,0 +1,23 @@
+<Project Sdk="Aspire.AppHost.Sdk/13.6.0">
+
+  <!--
+    The AppHost: the whole app and its Azure resources, in code.
+    Aspire.Hosting.Foundry replaces the old Aspire.Hosting.Azure.AIFoundry (Aspire 13.1 or earlier).
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <IsAspireHost>true</IsAspireHost>
+    <UserSecretsId>global-ai-sarasota-2026-apphost</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../Web/Web.csproj" />
+  </ItemGroup>
+
+  <!-- Floating versions on purpose: once it builds and works, pin them to the versions that were restored. -->
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.Foundry" Version="*-*" />
+    <PackageReference Include="Aspire.Hosting.Azure.AppContainers" Version="*" />
+  </ItemGroup>
+
+</Project>
