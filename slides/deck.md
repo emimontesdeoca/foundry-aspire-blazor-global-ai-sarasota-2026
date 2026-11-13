@@ -65,14 +65,6 @@ style: |
   section.lead h2 { color: var(--gain-orange-light); }
   section.lead p { color: #e4edf5; }
   section.lead footer, section.lead::after { color: var(--gain-blue); }
-  section.demo h2::before { content: "DEMO / "; color: var(--gain-orange-text); font-size: 0.55em; letter-spacing: 0.08em; }
-  section.demo pre { font-size: 0.68em; }
-  section.transform-before h2::before {
-    content: "BEFORE / ";
-    color: var(--gain-orange-text);
-    font-size: 0.55em;
-    letter-spacing: 0.08em;
-  }
   section.architecture .architecture-columns {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -130,6 +122,45 @@ style: |
     object-fit: cover;
     object-position: center 32%;
   }
+  section.hook {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  section.hook h1 {
+    max-width: 14em;
+    font-size: 2.35em;
+    line-height: 1.12;
+  }
+  section.components .component-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.45em;
+    margin-top: 0.85em;
+  }
+  section.components .component-card {
+    display: flex;
+    min-height: 1.65em;
+    align-items: center;
+    justify-content: center;
+    padding: 0.35em 0.45em;
+    border: 1px solid #d5e0ea;
+    border-left: 4px solid var(--gain-orange);
+    border-radius: 8px;
+    background: var(--gain-surface);
+    color: var(--gain-navy);
+    font-size: 0.72em;
+    font-weight: 600;
+    text-align: center;
+  }
+  section.components .component-transition {
+    margin: 0.65em 0 0;
+    color: var(--gain-orange-text);
+    font-size: 1.4em;
+    font-weight: 600;
+    text-align: center;
+  }
   section table { font-size: 0.78em; width: 100%; }
   section th { background: var(--gain-navy); color: #fff; }
   section blockquote { border-left: 5px solid var(--gain-orange); padding-left: 0.7em; color: #42566f; }
@@ -186,7 +217,7 @@ Es el lanzamiento de una comunidad nueva: dar la enhorabuena a la organización 
 </div>
 
 <!--
-TIEMPO: 0:20 – 1:00
+TIEMPO: 0:20 – 0:45
 
 Breve. Lo único que quiero que recuerden: ya no programo cada día; lidero un equipo, y lo que más me
 importa es que cualquiera del equipo pueda clonar un repo de IA y ejecutarlo el primer día.
@@ -194,7 +225,49 @@ importa es que cualquiera del equipo pueda clonar un repo de IA y ejecutarlo el 
 
 ---
 
-<!-- _class: transform-before -->
+<!-- _class: lead hook -->
+
+<h1>What makes up an application?</h1>
+
+<!--
+TIEMPO: 0:45 – 0:55
+
+Pregunta al público: "What makes up an application?" Dejar unos segundos para que piensen; todavía
+no responder.
+-->
+
+---
+
+<!-- _class: components -->
+
+## An application is more than code
+<br>
+<div class="component-grid">
+  <div class="component-card">Services</div>
+  <div class="component-card">API keys &amp; secrets</div>
+  <div class="component-card">Database</div>
+  <div class="component-card">Environments</div>
+  <div class="component-card">Local development</div>
+  <div class="component-card">Deployment</div>
+  <div class="component-card">AI models</div>
+  <div class="component-card">Roles &amp; permissions</div>
+  <div class="component-card">Configuration</div>
+  <div class="component-card">Networking</div>
+  <div class="component-card">Observability</div>
+  <div class="component-card">CI/CD</div>
+</div>
+<br>
+<p class="component-transition">We just want to build an app. Why are we already running into problems?</p>
+
+<!--
+TIEMPO: 0:55 – 1:10
+
+Dejar que lean las cajas. No todas las aplicaciones necesitan todas estas piezas; por ejemplo, esta
+demo no usa base de datos. La idea es que cada equipo acaba configurando y conectando varias cosas
+antes de escribir código útil.
+-->
+
+---
 
 ## The problem
 
@@ -207,7 +280,7 @@ Every AI app needs the same setup before useful code:
 **Works once. For one person. The next clone starts from zero.**
 
 <!--
-TIEMPO: 1:00 – 2:30
+TIEMPO: 1:10 – 2:30
 
 Pregunta al chat: ¿quién ha pegado alguna vez una API key en appsettings "solo para probar"?
 Esperar dos segundos. Todos.
@@ -343,18 +416,14 @@ Volver al BEFORE: los pasos del portal y las claves se sustituyen por código y 
 
 ---
 
-<!-- _class: demo -->
+<!-- _class: lead hook -->
 
-## 1 · Run locally → ```aspire run```
-
-1. Dashboard: `foundry`, `story`, `image`, `web`
-2. `web` → **Environment**: `STORY_URI`, `IMAGE_MODELNAME`… no key
-3. Open the web: *"A lighthouse keeper who is afraid of the dark"*
-4. The story… and its picture
+<h1>It's demo time</h1>
 
 <!--
-TIEMPO: 7:30 – 14:55
+TIEMPO: 7:30 – 19:25
 
+DEMO 1 · Run locally (`aspire run`) · 7:30–14:55
 Antes de empezar: Foundry y los dos despliegues YA creados (aspire run de la mañana), az login
 hecho, la web calentada con una historia (la primera llamada tarda más).
 Guion:
@@ -363,43 +432,13 @@ Guion:
 - Abrir la web. Pedir al chat una idea; si nadie dice nada, la del faro.
 - Mientras dibuja (unos segundos): "esto es el modelo de imagen trabajando".
 Si falla: un intento de un minuto, luego vídeo de respaldo.
--->
 
----
-
-<!-- _class: demo -->
-
-## 2 · Observability
-
-- Dashboard → **Traces** → the `POST` of the story
-- `chat gpt-6-luna` → then `images/generations`
-- Tokens, duration, which model, in order
-
-<p class="metric">Observability from the first run. Zero setup.</p>
-
-<!--
-TIEMPO: 14:55 – 16:25
-
+DEMO 2 · Observability · 14:55–16:25
 Abrir la traza de la petición. Primero el span del chat (luna), luego la llamada HTTP a
 images/generations. Enseñar cuál tarda más (la imagen). Esto sale de ServiceDefaults y del
 switch de telemetría del SDK de OpenAI; no he escrito nada de telemetría a mano.
--->
 
----
-
-<!-- _class: demo -->
-
-## 3 · Now in Azure → ```aspire deploy```
-
-
-1. Builds the web image, pushes it to a registry
-2. Creates the Container Apps environment + the app
-3. Managed identity + roles on Foundry
-4. Open the public URL → same story, same picture
-
-<!--
-TIEMPO: 16:25 – 19:25
-
+DEMO 3 · Now in Azure (`aspire deploy`) · 16:25–19:25
 NO desplegar en directo desde cero: tarda varios minutos. Plan: lanzar `aspire deploy` y enseñar
 la salida mientras habla, o enseñar el despliegue de la mañana (consola + URL pública).
 Pedir otra historia en la URL pública. Punto clave: el mismo código, ninguna clave; ahora la

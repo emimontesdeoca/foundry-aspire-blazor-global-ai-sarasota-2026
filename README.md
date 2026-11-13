@@ -151,8 +151,10 @@ which is git-ignored).
 
 ## 7. Slides (MARP)
 
-`slides/deck.md`, for [Marp](https://marp.app). Cover, bio, the problem and old workflow, AppHost
-architecture, client code, three demos, summary and Q&A. Speaker notes (in Spanish) with **timings for 25 minutes**.
+`slides/deck.md`, for [Marp](https://marp.app). Cover, bio, a two-slide hook on the pieces behind an
+application, the problem and old workflow, AppHost architecture, client code, one demo-time divider for
+three live demos, summary and Q&A.
+Speaker notes (in Spanish) with **timings for 25 minutes**.
 
 The public presentation is [available on GitHub Pages](https://emimontesdeoca.github.io/foundry-aspire-blazor-global-ai-sarasota-2026/).
 It is rebuilt from `slides/deck.md` whenever the slides or publishing workflow change on `main`.
@@ -171,13 +173,11 @@ The deck loads Space Grotesk from `slides/assets/`; its OFL license is included 
 
 | Minute | Section | Slides |
 |---|---|---|
-| 0:00–1:00 | Cover and bio | 1–2 |
-| 1:00–2:30 | The problem and old workflow | 3 |
-| 2:30–5:00 | What Aspire is, what `aspire run` does | 4–5 |
-| 5:00–7:30 | AppHost orchestration and client code | 6 |
-| 7:30–14:55 | **Demo 1**: run locally | 7 |
-| 14:55–16:25 | **Demo 2**: observability | 8 |
-| 16:25–19:25 | **Demo 3**: now in Azure | 9 |
+| 0:00–1:10 | Cover, bio and application pieces | 1–4 |
+| 1:10–2:30 | The problem and old workflow | 5 |
+| 2:30–5:00 | What Aspire is, what `aspire run` does | 6–7 |
+| 5:00–7:30 | AppHost orchestration and client code | 8 |
+| 7:30–19:25 | **It's demo time**: run locally, observability and Azure | 9 |
 | 19:25–20:00 | Summary | 10 |
 | 20:00–25:00 | Questions | 11 |
 
