@@ -11,7 +11,7 @@ short story with one Foundry model and illustrates it with another, plus the spe
 foundry-aspire-blazor-global-ai-sarasota-2026/
 ├── README.md             ← you are here: what, why, how to run, how to present
 ├── slides/
-│   ├── deck.md           ← MARP deck, 11 slides, speaker notes with timings
+│   ├── deck.md           ← MARP deck, 10 slides, speaker notes with timings
 │   └── assets/           ← Sarasota logo, speaker/MVP badges and Space Grotesk font (OFL)
 └── src/
     ├── StoryTime.slnx            ← solution (.NET 10)
@@ -152,8 +152,8 @@ which is git-ignored).
 ## 7. Slides (MARP)
 
 `slides/deck.md`, for [Marp](https://marp.app). Cover, bio, a two-slide hook on the pieces behind an
-application, the problem and old workflow, AppHost architecture, client code, one demo-time divider for
-three live demos, summary and Q&A.
+application, the problem and old workflow, the Aspire overview and `aspire run`, one demo-time divider
+for three live demos, summary and Q&A.
 Speaker notes (in Spanish) with **timings for 25 minutes**.
 
 The public presentation is [available on GitHub Pages](https://emimontesdeoca.github.io/foundry-aspire-blazor-global-ai-sarasota-2026/).
@@ -176,10 +176,9 @@ The deck loads Space Grotesk from `slides/assets/`; its OFL license is included 
 | 0:00–1:10 | Cover, bio and application pieces | 1–4 |
 | 1:10–2:30 | The problem and old workflow | 5 |
 | 2:30–5:00 | What Aspire is, what `aspire run` does | 6–7 |
-| 5:00–7:30 | AppHost orchestration and client code | 8 |
-| 7:30–19:25 | **It's demo time**: run locally, observability and Azure | 9 |
-| 19:25–20:00 | Summary | 10 |
-| 20:00–25:00 | Questions | 11 |
+| 5:00–19:25 | **It's demo time**: run locally, observability and Azure | 8 |
+| 19:25–20:00 | Summary | 9 |
+| 20:00–25:00 | Questions | 10 |
 
 ---
 

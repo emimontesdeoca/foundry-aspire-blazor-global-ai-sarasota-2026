@@ -65,29 +65,6 @@ style: |
   section.lead h2 { color: var(--gain-orange-light); }
   section.lead p { color: #e4edf5; }
   section.lead footer, section.lead::after { color: var(--gain-blue); }
-  section.architecture .architecture-columns {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    align-items: start;
-    gap: 1em;
-  }
-  section.architecture .architecture-columns h3 {
-    margin: 0 0 0.35em;
-    font-size: 0.9em;
-    line-height: 1.2;
-    color: var(--gain-navy);
-  }
-  section.architecture pre {
-    margin: 0;
-    font-size: 0.55em;
-    line-height: 1.22;
-    padding: 0.5em 0.55em;
-  }
-  section.architecture .small {
-    margin: 0.5em 0 0;
-    font-size: 0.68em;
-    line-height: 1.3;
-  }
   section.bio .bio-layout {
     display: grid;
     grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
@@ -182,7 +159,7 @@ Global AI Sarasota Kickoff 2026 · November 13 · Online
 <!--
 TIEMPO: 0:00 – 0:20
 
-11 diapositivas: 10 de contenido y una de cierre.
+10 diapositivas: 9 de contenido y una de cierre.
 Objetivo: 20 minutos de contenido y 5 de preguntas. La sesión es de 25 minutos con las preguntas
 incluidas. Las tres demos son el centro de la charla.
 
@@ -356,74 +333,14 @@ autenticación local desactivada y Aspire asigna los roles. No existe ninguna cl
 
 ---
 
-<!-- _class: architecture -->
-
-## One AppHost, two sides
-
-<div class="architecture-columns">
-<div>
-
-### The orchestrating side
-
-```csharp
-builder.AddAzureContainerAppEnvironment("env");
-
-var foundry = builder.AddFoundry("foundry");
-
-var story = foundry.AddDeployment(
-    "story",
-    "gpt-6-luna",
-    "2026-09-22",
-    "OpenAI");
-
-builder.AddProject<Projects.Web>("web")
-    .WithReference(story).WaitFor(story)
-    .WithExternalHttpEndpoints();
-```
-
-</div>
-<div>
-
-### The client side: no keys
-
-```csharp
-var auth = new BearerTokenPolicy(
-    new DefaultAzureCredential(),
-    "https://ai.azure.com/.default");
-
-builder.Services.AddSingleton(new ChatClient(
-    model: config["STORY_MODELNAME"],
-    authenticationPolicy: auth,
-    options: new()
-    {
-        Endpoint = new(
-            $"{config["STORY_URI"]}openai/v1/")
-    }));
-```
-
-
-</div>
-</div>
-
-<!--
-TIEMPO: 5:00 – 7:30
-
-A la izquierda, el AppHost define el entorno, Foundry, los deployments y las referencias a la web.
-A la derecha, la web consume las variables que Aspire inyecta y usa DefaultAzureCredential: no hay
-API keys. Localmente se autentica con az login; en Azure, con la identidad gestionada.
-Volver al BEFORE: los pasos del portal y las claves se sustituyen por código y WithReference.
--->
-
----
-
 <!-- _class: lead hook -->
 
 <h1>It's demo time</h1>
 
 <!--
-TIEMPO: 7:30 – 19:25
+TIEMPO: 5:00 – 19:25
 
-DEMO 1 · Run locally (`aspire run`) · 7:30–14:55
+DEMO 1 · Run locally (`aspire run`) · 5:00–12:25
 Antes de empezar: Foundry y los dos despliegues YA creados (aspire run de la mañana), az login
 hecho, la web calentada con una historia (la primera llamada tarda más).
 Guion:
@@ -433,12 +350,12 @@ Guion:
 - Mientras dibuja (unos segundos): "esto es el modelo de imagen trabajando".
 Si falla: un intento de un minuto, luego vídeo de respaldo.
 
-DEMO 2 · Observability · 14:55–16:25
+DEMO 2 · Observability · 12:25–13:55
 Abrir la traza de la petición. Primero el span del chat (luna), luego la llamada HTTP a
 images/generations. Enseñar cuál tarda más (la imagen). Esto sale de ServiceDefaults y del
 switch de telemetría del SDK de OpenAI; no he escrito nada de telemetría a mano.
 
-DEMO 3 · Now in Azure (`aspire deploy`) · 16:25–19:25
+DEMO 3 · Now in Azure (`aspire deploy`) · 13:55–19:25
 NO desplegar en directo desde cero: tarda varios minutos. Plan: lanzar `aspire deploy` y enseñar
 la salida mientras habla, o enseñar el despliegue de la mañana (consola + URL pública).
 Pedir otra historia en la URL pública. Punto clave: el mismo código, ninguna clave; ahora la
