@@ -154,6 +154,9 @@ which is git-ignored).
 `slides/deck.md`, for [Marp](https://marp.app). Cover, bio, the problem and old workflow, AppHost
 architecture, client code, three demos, summary and Q&A. Speaker notes (in Spanish) with **timings for 25 minutes**.
 
+The public presentation is [available on GitHub Pages](https://emimontesdeoca.github.io/foundry-aspire-blazor-global-ai-sarasota-2026/).
+It is rebuilt from `slides/deck.md` whenever the slides or publishing workflow change on `main`.
+
 ```bash
 cd slides
 npx @marp-team/marp-cli deck.md -o deck.html --allow-local-files   # press P: presenter view
